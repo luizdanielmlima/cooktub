@@ -1,0 +1,57 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Channels
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div class="top-banner-area">
+    <!-- <div class="banner"></div> -->
+    <ion-note>v.1.2</ion-note>
+  </div>
+  <div class="content-area">
+    <div class="title-area">
+      <div class="title-box">
+        <div class="home-logo">
+          <img
+            src="../../assets/cookingtube_logo_medium.png"
+            alt="banner background"
+          />
+        </div>
+        <div class="title-text">
+          <h1>cooktub</h1>
+          <p>The best Youtube cooking channels in one place</p>
+        </div>
+      </div>
+    </div>
+    <div class="list-area">
+      <h6 class="list-title">Featured Channels</h6>
+      <div *ngIf="!channels" class="spinner-area">
+        <ion-spinner></ion-spinner>
+      </div>
+      <ion-list lines="none" *ngIf="channels">
+        <ion-item
+          no-padding
+          *ngFor="let channel of channels"
+          [routerLink]="['/channels', channel.id]"
+        >
+          <div class="thumb-container">
+            <img class="thumb" [src]="channel.snippet.thumbnails.default.url" />
+          </div>
+          <div class="item-text-area">
+            <h4>
+              {{ channel.snippet.title }}
+            </h4>
+            <p>{{ channel.statistics.videoCount | number }} videos</p>
+            <p>{{ channel.statistics.subscriberCount | number }} subscribers</p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-content *ngIf="channelData">
+  <div class="top-banner-area">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="channels"></ion-back-button>
+    </ion-buttons>
+  </div>
+  <div class="content-area">
+    <div class="title-area">
+      <div class="title-box">
+        <div class="logo-container">
+          <img
+            class="logo"
+            [src]="channelData.snippet.thumbnails.default.url"
+            alt="channel logo"
+          />
+        </div>
+        <ion-title class="page-title" color="secondary">{{
+          channelData.snippet.title
+        }}</ion-title>
+        <div class="page-stats">
+          <p>
+            <span class="stat-number"
+              >{{ channelData.statistics.viewCount | number }}
+            </span>
+            views
+          </p>
+          <p>
+            <span class="stat-number"
+              >{{ channelData.statistics.videoCount | number }}
+            </span>
+            videos
+          </p>
+          <p>
+            <span class="stat-number"
+              >{{ channelData.statistics.subscriberCount | number }}
+            </span>
+            subscribers
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="list-area">
+      <h6 class="list-title">Playlists</h6>
+      <div *ngIf="!playlists" class="spinner-area">
+        <ion-spinner></ion-spinner>
+      </div>
+
+      <ion-list lines="none" *ngIf="playlists">
+        <ion-item
+          no-padding
+          *ngFor="let playlist of playlists"
+          (click)="goToPlaylistPage(playlist)"
+        >
+          <div class="thumb-container">
+            <img class="thumb" [src]="playlist.snippet.thumbnails.medium.url" />
+          </div>
+          <div class="item-text-area">
+            <h4>
+              {{ playlist.snippet.title }}
+            </h4>
+            <p>{{ playlist.snippet.publishedAt | date }}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

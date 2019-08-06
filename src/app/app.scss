@@ -1,0 +1,194 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+
+@import '../theme/variables.scss';
+
+// App Mixins
+// ----------------------------------------------------------------------------
+@mixin prefix($property, $value, $vendors: webkit moz ms o, $default: true) {
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
+    }
+  }
+  @if $default {
+    #{$property}: #{$value};
+  }
+}
+
+@mixin centerH {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  @include prefix(transform, translate(-50%, 0), 'webkit' 'ms');
+}
+
+@mixin centerAll {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include prefix(transform, translate(-50%, -50%), 'webkit' 'ms');
+}
+
+// App Variables
+// ----------------------------------------------------------------------------
+$card-radius: 8px;
+$card-shadow: 0 0 3px #ddd;
+$banner-height: 200px;
+
+// App SCSS
+// ----------------------------------------------------------------------------
+ion-buttons {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+
+  ion-back-button {
+    --background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.content-area {
+  padding: 24px;
+  top: 40px;
+  @include centerH();
+  width: 100%;
+  max-width: 600px;
+}
+
+.title-area {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+
+  .title-box {
+    position: relative;
+    background-color: white;
+    margin: 16px auto;
+    padding: 16px;
+    box-shadow: $card-shadow;
+    border-radius: $card-radius;
+
+    .logo-container {
+      width: 60px;
+      height: 60px;
+      top: -30px;
+      @include centerH();
+      box-shadow: $card-shadow;
+      border-radius: 50%;
+    }
+
+    .logo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: circle(30px at center);
+    }
+
+    .page-title {
+      margin: 20px 0 0 0;
+      padding: 8px;
+      font-size: 1.2em;
+      // border: 1px solid palegreen;
+    }
+
+    .page-stats {
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      // border: 1px solid paleturquoise;
+
+      p {
+        font-size: 0.8em;
+        padding: 0 14px;
+        // border: 1px solid palegreen;
+      }
+
+      .stat-number {
+        font-weight: 600;
+        display: block;
+      }
+    }
+  }
+}
+
+.list-area {
+  margin-top: 24px;
+  padding: 0;
+  // border: 1px solid blue;
+
+  .spinner-area {
+    margin: 0 auto;
+    width: 100px;
+    padding: 40px;
+  }
+
+  .list-title {
+    color: var(--ion-color-primary);
+    text-align: center;
+    margin-top: 36px;
+  }
+
+  ion-list {
+    padding: 0;
+    margin: 0;
+    // border: 1px solid palevioletred;
+    background: none;
+
+    ion-item {
+      cursor: pointer;
+      margin: 6px 0 24px 0;
+      padding: 0;
+      box-shadow: $card-shadow;
+      border-radius: $card-radius;
+
+      .thumb-container {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 180px;
+        min-height: 100px;
+        height: 100%;
+
+        // the icon is only used in the videos page...
+        ion-icon {
+          font-size: 64px;
+          color: white;
+          opacity: 0.4;
+          @include centerAll();
+        }
+
+        .thumb {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-top-left-radius: $card-radius;
+          border-bottom-left-radius: $card-radius;
+          border-right: 1px solid #eee;
+        }
+      }
+
+      .item-text-area {
+        width: 100%;
+        padding: 0 18px;
+        // border: 1px solid paleturquoise;
+
+        h4 {
+          font-size: 0.9em;
+        }
+
+        p {
+          font-family: 'Open Sans', sans-serif;
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}

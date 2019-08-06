@@ -1,0 +1,31 @@
+@import '../app.scss';
+
+// Variables
+// ----------------------------------------------------------------------------
+// $bgGradColor1: #fff4ed;
+// $bgGradColor2: #f3e6de;
+$banner-url: '../../assets/cook_pattern_02.png';
+
+ion-content {
+  --background: #fff4ed; /* fallback for old browsers */
+  --background: -webkit-linear-gradient(
+    to right,
+    #fff4ed,
+    #f3e6de
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  --background: linear-gradient(
+    to right,
+    #fff4ed,
+    #f3e6de
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.top-banner-area {
+  position: relative;
+  background: repeat-x url('../../assets/cook_pattern_02.png');
+  height: $banner-height;
+}
+
+.list-title {
+  color: var(--ion-color-primary) !important;
+}

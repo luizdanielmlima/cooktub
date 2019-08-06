@@ -1,0 +1,70 @@
+<ion-content class="bg-gradient">
+  <div class="top-banner-area">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/channels/{{ channelID }}"
+      ></ion-back-button>
+    </ion-buttons>
+  </div>
+  <div class="content-area">
+    <div class="title-area">
+      <div class="title-box" *ngIf="this.playlistData">
+        <div class="logo-container">
+          <img
+            class="logo"
+            [src]="this.playlistData.snippet.thumbnails.medium.url"
+            alt="playlist logo"
+          />
+        </div>
+        <ion-title class="page-title" color="primary">{{
+          this.playlistData.snippet.title
+        }}</ion-title>
+        <div class="page-stats">
+          <p>
+            Published at
+            <span class="stat-number"
+              >{{ this.playlistData.snippet.publishedAt | date }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="list-area">
+      <h6 class="list-title">Videos</h6>
+      <div *ngIf="!videos" class="spinner-area">
+        <ion-spinner></ion-spinner>
+      </div>
+      <ion-list lines="none" *ngIf="videos">
+        <ion-item
+          no-padding
+          *ngFor="let video of videos"
+          (click)="openVideoPlayerModal(video.snippet.resourceId.videoId)"
+        >
+          <div class="thumb-container">
+            <ion-icon name="play-circle"></ion-icon>
+            <img class="thumb" [src]="video.snippet.thumbnails.medium.url" />
+          </div>
+          <div class="item-text-area">
+            <h4>
+              {{ video.snippet.title }}
+            </h4>
+            <p>{{ video.snippet.publishedAt | date }}</p>
+          </div>
+        </ion-item>
+        <!-- <div
+          class="list-item"
+          *ngFor="let video of videos"
+          (click)="playVideo()"
+        >
+          <img [src]="video.snippet.thumbnails.medium.url" />
+          <div class="item-text-area">
+            <h4>
+              {{ video.snippet.title }}
+            </h4>
+            <p>{{ video.snippet.publishedAt | date }}</p>
+          </div>
+        </div> -->
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
