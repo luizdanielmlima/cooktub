@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PlaylistDetailPage } from './playlist-detail.page';
-import { PlayerModalComponent } from '../component/player-modal/player-modal.component';
 import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [

@@ -8,7 +8,7 @@
   </div>
   <div class="content-area">
     <div class="title-area">
-      <div class="title-box" *ngIf="this.playlistData">
+      <div class="title-box animated zoomIn faster" *ngIf="this.playlistData">
         <div class="logo-container">
           <img
             class="logo"
@@ -16,10 +16,10 @@
             alt="playlist logo"
           />
         </div>
-        <ion-title class="page-title" color="primary">{{
-          this.playlistData.snippet.title
-        }}</ion-title>
-        <div class="page-stats">
+        <h2 class="page-title animated fadeIn delay-400ms">
+          {{ this.playlistData.snippet.title }}
+        </h2>
+        <div class="page-stats animated fadeIn delay-600ms">
           <p>
             Published at
             <span class="stat-number"
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div class="list-area">
+    <div class="list-area  animated fadeIn delay-800ms">
       <h6 class="list-title">Videos</h6>
       <div *ngIf="!videos" class="spinner-area">
         <ion-spinner></ion-spinner>
@@ -51,20 +51,10 @@
             <p>{{ video.snippet.publishedAt | date }}</p>
           </div>
         </ion-item>
-        <!-- <div
-          class="list-item"
-          *ngFor="let video of videos"
-          (click)="playVideo()"
-        >
-          <img [src]="video.snippet.thumbnails.medium.url" />
-          <div class="item-text-area">
-            <h4>
-              {{ video.snippet.title }}
-            </h4>
-            <p>{{ video.snippet.publishedAt | date }}</p>
-          </div>
-        </div> -->
       </ion-list>
+    </div>
+    <div *ngIf="videos" class="backtop-btn animated fadeIn delay-800ms">
+      <ion-button (click)="scrollToTop()"  color="warning">Back to Top</ion-button>
     </div>
   </div>
 </ion-content>

@@ -6,7 +6,7 @@
   </div>
   <div class="content-area">
     <div class="title-area">
-      <div class="title-box">
+      <div class="title-box animated zoomIn faster">
         <div class="logo-container">
           <img
             class="logo"
@@ -14,10 +14,10 @@
             alt="channel logo"
           />
         </div>
-        <ion-title class="page-title" color="secondary">{{
-          channelData.snippet.title
-        }}</ion-title>
-        <div class="page-stats">
+        <h2 class="page-title animated fadeIn delay-400ms">
+          {{ channelData.snippet.title }}
+        </h2>
+        <div class="page-stats animated fadeIn delay-600ms">
           <p>
             <span class="stat-number"
               >{{ channelData.statistics.viewCount | number }}
@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="list-area">
+    <div class="list-area animated fadeIn delay-800ms">
       <h6 class="list-title">Playlists</h6>
       <div *ngIf="!playlists" class="spinner-area">
         <ion-spinner></ion-spinner>
@@ -48,7 +48,7 @@
       <ion-list lines="none" *ngIf="playlists">
         <ion-item
           no-padding
-          *ngFor="let playlist of playlists"
+          *ngFor="let playlist of playlists; let i = index"
           (click)="goToPlaylistPage(playlist)"
         >
           <div class="thumb-container">
@@ -62,6 +62,11 @@
           </div>
         </ion-item>
       </ion-list>
+    </div>
+    <div *ngIf="playlists" class="backtop-btn animated fadeIn delay-800ms">
+      <ion-button (click)="scrollToTop()" color="warning"
+        >Back to Top</ion-button
+      >
     </div>
   </div>
 </ion-content>

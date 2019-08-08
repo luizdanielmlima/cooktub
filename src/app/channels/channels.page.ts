@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonContent } from '@ionic/angular';
+
 import { DataService } from '../shared/data.service';
 import { Channel } from '../shared/channel.model';
 
@@ -8,6 +10,7 @@ import { Channel } from '../shared/channel.model';
   styleUrls: ['channels.page.scss']
 })
 export class ChannelsPage implements OnInit {
+  @ViewChild(IonContent, { static: false }) content: IonContent;
   public channelsRef = [
     {
       id: 'UCemXyN0MvApSEEtGvAsdo3g',
@@ -41,6 +44,10 @@ export class ChannelsPage implements OnInit {
 
   ngOnInit() {
     this.getChannelsInfo();
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(1000);
   }
 
   getChannelsInfo() {

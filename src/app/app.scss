@@ -43,6 +43,22 @@ $banner-height: 200px;
 
 // App SCSS
 // ----------------------------------------------------------------------------
+.delay-200ms {
+  animation-delay: 200ms;
+}
+
+.delay-400ms {
+  animation-delay: 400ms;
+}
+
+.delay-600ms {
+  animation-delay: 600ms;
+}
+
+.delay-800ms {
+  animation-delay: 800ms;
+}
+
 ion-buttons {
   position: absolute;
   top: 6px;
@@ -51,6 +67,20 @@ ion-buttons {
   ion-back-button {
     --background: rgba(255, 255, 255, 0.5);
   }
+}
+
+.ios {
+  ion-buttons {
+    ion-back-button {
+      --color: black;
+      --padding-end: 8px;
+    }
+  }
+}
+
+.backtop-btn {
+  display: flex;
+  justify-content: center;
 }
 
 .content-area {
@@ -94,14 +124,12 @@ ion-buttons {
       margin: 20px 0 0 0;
       padding: 8px;
       font-size: 1.2em;
-      // border: 1px solid palegreen;
     }
 
     .page-stats {
       font-family: 'Open Sans', sans-serif;
       display: flex;
       justify-content: center;
-      // border: 1px solid paleturquoise;
 
       p {
         font-size: 0.8em;

@@ -16,7 +16,7 @@
   </div>
   <div class="content-area">
     <div class="title-area">
-      <div class="title-box">
+      <div class="title-box animated zoomIn faster">
         <div class="home-logo">
           <img
             src="../../assets/cookingtube_logo_medium.png"
@@ -24,12 +24,14 @@
           />
         </div>
         <div class="title-text">
-          <h1>cooktub</h1>
-          <p>The best Youtube cooking channels in one place</p>
+          <h1 class="animated fadeIn delay-400ms">cooktub</h1>
+          <p class="animated fadeIn delay-600ms">
+            The best Youtube cooking channels in one place
+          </p>
         </div>
       </div>
     </div>
-    <div class="list-area">
+    <div class="list-area animated fadeIn delay-800ms">
       <h6 class="list-title">Featured Channels</h6>
       <div *ngIf="!channels" class="spinner-area">
         <ion-spinner></ion-spinner>
@@ -52,6 +54,11 @@
           </div>
         </ion-item>
       </ion-list>
+    </div>
+    <div *ngIf="channels" class="backtop-btn animated fadeIn delay-800ms">
+      <ion-button (click)="scrollToTop()" color="warning"
+        >Back to Top</ion-button
+      >
     </div>
   </div>
 </ion-content>

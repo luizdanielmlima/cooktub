@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent } from '@ionic/angular';
 
 import { DataService } from '../shared/data.service';
 import { Channel } from '../shared/channel.model';
@@ -14,6 +15,7 @@ export class ChannelDetailPage implements OnInit {
   channelID: string;
   channelData: Channel;
   playlists: Playlist[];
+  @ViewChild(IonContent, { static: false }) content: IonContent;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +32,10 @@ export class ChannelDetailPage implements OnInit {
       this.channelID = paramMap.get('channelID');
       this.checkDataStatus();
     });
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(1000);
   }
 
   checkDataStatus() {

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { IonContent } from '@ionic/angular';
 
 import { DataService } from '../shared/data.service';
 import { Video } from '../shared/video.model';
@@ -17,6 +18,7 @@ export class PlaylistDetailPage implements OnInit {
   playlistID: string;
   playlistData: Playlist;
   videos: Video[];
+  @ViewChild(IonContent, { static: false }) content: IonContent;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +37,10 @@ export class PlaylistDetailPage implements OnInit {
       this.playlistData = this.dataService.getCurrentPlaylist(); // TODO: treats condition where user access url directly (no previous data)
       this.getPlaylistVideos();
     });
+  }
+
+  scrollToTop() {
+    this.content.scrollToTop(1000);
   }
 
   getPlaylistVideos() {
